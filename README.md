@@ -53,7 +53,7 @@ mpirun -np <number_of_processes> ./collect_system_info.sh
 Replace `<number_of_processes>` with the number of processes you wish to run. Each process will collect data and write to a CSV file named based on the rank number.
 
 ### Note
-Stats will be saved to `system_info_rank${$RANK}.csv`. If you are using MPICH, `RANK=${PMI_RANK}`, but if you are using OpenMPI you might want to change it to `RANK=${OMPI_COMM_WORLD_RANK}`. If you don't plan on using MPI, then you should change it to `RANK=$(hostname)``
+Stats will be saved to `system_info_rank${$RANK}.csv`. If you are using MPICH, `RANK=${PMI_RANK}`, but if you are using OpenMPI you might want to change it to `RANK=${OMPI_COMM_WORLD_RANK}`. If you don't plan on using MPI, then you should change it to `RANK=$(hostname)`
 
 ## Example
 ```bash
