@@ -28,8 +28,8 @@ Ensure you have the following installed on your system:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/system-info-collector.git
-    cd system-info-collector
+    git clone https://github.com/mvictoras/hpc-system-info.git
+    cd hpc-system-info
     ```
 
 2. Make the script executable:
@@ -44,8 +44,35 @@ Ensure you have the following installed on your system:
 
 ### Running with mpirun
 
-To run the script using `mpirun`, ensure you have OpenMPI installed. The following command runs the script across multiple processes:
+To run the script using `mpirun`, ensure you have OpenMPI or MPICH installed. The following command runs the script across multiple processes:
 
 ```bash
 mpirun -np <number_of_processes> ./collect_system_info.sh
+```
 
+Replace `<number_of_processes>` with the number of processes you wish to run. Each process will collect data and write to a CSV file named based on the rank number.
+
+### Note
+Stats will be saved to `system_info_rank${$RANK}.csv`. If you are using MPICH, `RANK=${PMI_RANK}`, but if you are using OpenMPI you might want to change it to `RANK=${OMPI_COMM_WORLD_RANK}`. If you don't plan on using MPI, then you should change it to `RANK=$(hostname)``
+
+## Example
+```bash
+mpirun -np 4 ./collect_system_info.sh
+```
+
+This command runs the script using 4 processes, each collecting system information and writing to separate CSV files based on their respective rank numbers.
+
+## Output
+The script generates a CSV file named `system_info_rank_<rank_number>.csv` with the following columns:
+
+- Timestamp
+- GPU utilization and memorys (for all GPUs)
+- CPU utilization (for all cores)
+- Memory_Used
+- Memory_Free
+
+## Contributing
+Contributions are welcome! Please create a pull request or open an issue for any bugs or feature requests.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
