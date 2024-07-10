@@ -75,4 +75,4 @@ The script generates a CSV file named `system_info_rank_<rank_number>.csv` with 
 Contributions are welcome! Please create a pull request or open an issue for any bugs or feature requests.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
