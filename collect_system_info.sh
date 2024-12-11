@@ -56,7 +56,7 @@ calculate_averages() {
 }
 
 # CSV filename based on rank
-RANK=${PMI_RANK}
+RANK=$(hostname)
 CSV_FILENAME="system_info_rank_${RANK}.csv"
 
 CPU_HEADER=$(generate_cpu_header)
